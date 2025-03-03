@@ -49,7 +49,21 @@ Evaluate the model with the testing data.
 class NeuralNet(nn.Module):
     def __init__(self):
         super().__init__()
-        #Include your code here
+        class NeuralNet(nn.Module):
+  def _init_(self):
+    super()._init_()
+    self.fc1 = nn. Linear (1, 12)
+    self.fc2 = nn. Linear (12, 10)
+    self.fc3 = nn. Linear (10, 1)
+    self.relu = nn.ReLU()
+    self.history = {'loss': []}
+
+  def forward(self, x):
+      x = self.relu(self.fc1(x))
+      x = self.relu(self.fc2(x))
+      x = self.fc3(x) # No activation here since it's a regression t.
+      return x
+
 
 
 
@@ -57,26 +71,35 @@ class NeuralNet(nn.Module):
 
 
 
-def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
-    #Include your code here
+def train_model (ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        loss = criterion (ai_brain (X_train), y_train)
+        loss.backward()
+        optimizer.step()
+        ai_brain.history['loss'].append(loss.item())
+        if epoch % 200 == 0:
+            print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 
 
 ```
 ## Dataset Information
+![alt text](<Screenshot 2025-03-03 112507.png>)
 
-Include screenshot of the dataset
+![alt text](<Screenshot 2025-03-03 110546.png>)
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+Include your plot 
+![alt text](<Screenshot 2025-03-03 113954.png>)
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![alt text](<Screenshot 2025-03-03 114133.png>)
 
 ## RESULT
 
-Include your result here
+The neural network regression model was successfully trained and evaluated. The model demonstrated strong predictive performance on unseen data, with a low error rate.
