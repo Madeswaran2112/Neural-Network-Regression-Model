@@ -88,7 +88,6 @@ def train_model (ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
 ## Dataset Information
 ![alt text](<Screenshot 2025-03-03 112507.png>)
 
-![alt text](<Screenshot 2025-03-03 110546.png>)
 
 ## OUTPUT
 
